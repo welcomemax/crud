@@ -1,0 +1,35 @@
+<form name="myForm">
+    <div>
+        <div class="mdl-textfield mdl-js-textfield" ng-class="{error: myForm.name.$invalid && !myForm.name.$pristine}">
+            <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="editProject.project.name" required>
+            <label class="mdl-textfield__label" for="name">Name</label>
+            <span class="mdl-textfield__error" ng-show="myForm.name.$error.required && !myForm.name.$pristine">Обязательно</span>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield" ng-class="{error: myForm.site.$invalid && !myForm.site.$pristine}">
+            <input class="mdl-textfield__input" type="text" id="site" name="site" ng-model="editProject.project.site" required>
+            <label class="mdl-textfield__label" for="site">Website</label>
+            <span class="mdl-textfield__error" ng-show="myForm.site.$error.required && !myForm.site.$pristine">Обязательно</span>
+            <span class="mdl-textfield__error" ng-show="myForm.site.$error.url">Не УРЛ</span>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows= "3" id="description" name="description" ng-model="editProject.project.description"></textarea>
+            <label class="mdl-textfield__label" for="description">Description</label>
+        </div>
+    </div>
+
+    <div>
+        <a class="mdl-button mdl-js-button mdl-button--accent" href="#/">Отмена</a>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                ng-click="editProject.save()" ng-disabled="myForm.$invalid">
+            Сохранить
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                ng-click="editProject.destroy()" ng-show="editProject.project.$id">
+            Удалить
+        </button>
+    </div>
+</form>

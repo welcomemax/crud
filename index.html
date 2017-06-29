@@ -1,14 +1,27 @@
 <!doctype html>
 <html ng-app="project">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js">
-    </script>
-    <script src="project.js"></script>
-    <script src="mongolab.js"></script>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+    <link rel="stylesheet" href="./node_modules/material-design-lite/material.min.css">
+    <script src="./node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="./app/common.css">
+
+    <script src="./app/project.js"></script>
+    <script src="./app/project-list.js"></script>
 </head>
 <body>
-    <h1>CRUD</h1>
-    <div ng-view></div>
+    <div class="wrapper">
+        <div ng-view></div>
+    </div>
 </body>
 </html>
