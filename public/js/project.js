@@ -54,21 +54,18 @@ angular.module('project', ['ngRoute', 'firebase'])
         $routeProvider
             .when('/', {
                 controller:'ProjectListController as projectList',
-                templateUrl:'./app/list.html',
+                templateUrl:'./public/templates/list.html',
                 resolve: resolveProjects
             })
             .when('/edit/:projectId', {
                 controller:'EditProjectController as editProject',
-                templateUrl:'./app/detail.html',
+                templateUrl:'./public/templates/detail.html',
                 resolve: resolveProjects
             })
             .when('/new', {
                 controller:'NewProjectController as editProject',
-                templateUrl:'./app/detail.html',
+                templateUrl:'./public/templates/detail.html',
                 resolve: resolveProjects
-            })
-            .when('/test', {
-                templateUrl: './app/test.html'
             })
             .otherwise({
                 redirectTo:'/'

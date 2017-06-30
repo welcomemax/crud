@@ -1,9 +1,27 @@
+// MDL
+@import "node_modules/material-design-lite/src/material-design-lite.scss";
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 // Variables
-@import "variables";
+//@import "variables";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+body {
+  margin: 0;
+  background: #44A08D;
+  background: -webkit-linear-gradient(to bottom, #44A08D, #093637);
+  background: linear-gradient(to bottom, #44A08D, #093637);
+}
+
+.wrapper{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form{
+  background: #fff;
+  padding: 10px 20px;
+}
