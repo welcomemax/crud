@@ -1,130 +1,95 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 //require('./bootstrap');
 
-//require('./angular');
-//import 'material-design-lite/dist/material.min.js';
+//require('angular');
 
-angular.module('project', ['ngRoute', 'firebase'])
+import 'material-design-lite/dist/material.min.js';
 
-    .value('fbURL', 'https://ng-projects-list.firebaseio.com/')
-    .service('fbRef', function(fbURL) {
-        return new Firebase(fbURL)
-    })
-    .service('fbAuth', function($q, $firebase, $firebaseAuth, fbRef) {
-        var auth;
-        return function () {
-            if (auth) return $q.when(auth);
-            var authObj = $firebaseAuth(fbRef);
-            if (authObj.$getAuth()) {
-                return $q.when(auth = authObj.$getAuth());
-            }
-            var deferred = $q.defer();
-            authObj.$authAnonymously().then(function(authData) {
-                auth = authData;
-                deferred.resolve(authData);
-            });
-            return deferred.promise;
-        }
-    })
+var app = angular.module('items', ["ngRoute"])
+    .constant('API_URL', 'http://crud.local/api/');
 
-    .service('Projects', function($q, $firebase, fbRef, fbAuth, projectListValue) {
-        var self = this;
-        this.fetch = function () {
-            if (this.projects) return $q.when(this.projects);
-            return fbAuth().then(function(auth) {
-                var deferred = $q.defer();
-                var ref = fbRef.child('projects-fresh/' + auth.auth.uid);
-                var $projects = $firebase(ref);
-                ref.on('value', function(snapshot) {
-                    if (snapshot.val() === null) {
-                        $projects.$set(projectListValue);
-                    }
-                    self.projects = $projects.$asArray();
-                    deferred.resolve(self.projects);
-                });
+app.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            controller: 'itemsListController',
+            templateUrl: '../templates/list.html'
+        })
+        .when('/edit/:itemId', {
+            controller: 'itemEditController',
+            templateUrl: '../templates/detail.html'
+        })
+        .when('/new', {
+            controller: 'itemNewController',
+            templateUrl: '../templates/detail.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('');
+}]);
+app.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
 
-                //Remove projects list when no longer needed.
-                ref.onDisconnect().remove();
-                return deferred.promise;
-            });
-        };
-    })
 
-    .config(function($routeProvider) {
-        var resolveProjects = {
-            projects: function (Projects) {
-                return Projects.fetch();
-            }
-        };
+app.controller('itemsListController', function($scope, $http, API_URL) {
+    $http.get(API_URL + "items")
+        .then(function(response) {
+            $scope.items = response.data;
+        });
 
-        $routeProvider
-            .when('/', {
-                controller:'ProjectListController as projectList',
-                templateUrl:'templates/list.html',
-                resolve: resolveProjects
-            })
-            .when('/edit/:projectId', {
-                controller:'EditProjectController as editProject',
-                templateUrl:'templates/detail.html',
-                resolve: resolveProjects
-            })
-            .when('/new', {
-                controller:'NewProjectController as editProject',
-                templateUrl:'templates/detail.html',
-                resolve: resolveProjects
-            })
-            .otherwise({
-                redirectTo:'/'
-            });
-    })
-    .config(['$locationProvider', function($locationProvider) {
-        $locationProvider.hashPrefix(''); // remove percent-encoding for the forward-slash
-    }])
+    componentHandler.upgradeAllRegistered();
+});
 
-    .controller('ProjectListController', function(projects) {
-        var projectList = this;
-        projectList.projects = projects;
+app.controller('itemNewController', function($scope, $http, $httpParamSerializer, API_URL, $location) {
+    console.log($scope)
 
-        componentHandler.upgradeAllRegistered(); // Processing dynamically added elements MDL
-    })
+    $scope.save = function() {
+        $http({
+            method: 'POST',
+            url: API_URL + "items",
+            data: $httpParamSerializer($scope.item),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(response) {
+            console.log(response);
+            $location.path('/');
+        });
+    };
 
-    .controller('NewProjectController', function($location, projects) {
-        var editProject = this;
-        editProject.save = function() {
-            projects.$add(editProject.project).then(function(data) {
-                $location.path('/');
-            });
-        };
+    componentHandler.upgradeAllRegistered();
+});
 
-        componentHandler.upgradeAllRegistered(); // Processing dynamically added elements MDL
-    })
+app.controller('itemEditController', function($scope, $http, $httpParamSerializer, API_URL, $routeParams, $location) {
+    console.log($routeParams.itemId)
 
-    .controller('EditProjectController', function($location, $routeParams, projects) {
-        var editProject = this;
-        var projectId = $routeParams.projectId,
-            projectIndex;
+    $http.get(API_URL + "items/" + $routeParams.itemId)
+        .then(function(response) {
+            $scope.item = response.data;
+            console.log(response.data)
+        });
 
-        editProject.projects = projects;
-        projectIndex = editProject.projects.$indexFor(projectId);
-        editProject.project = editProject.projects[projectIndex];
+    $scope.save = function() {
+        $http({
+            method: 'POST',
+            url: API_URL + "items/" + $scope.item.id,
+            data: $httpParamSerializer($scope.item),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(response) {
+            console.log(response);
+            $location.path('/');
+        });
+    };
 
-        editProject.destroy = function() {
-            editProject.projects.$remove(editProject.project).then(function(data) {
-                $location.path('/');
-            });
-        };
+    $scope.delete = function() {
+        $http({
+            method: 'DELETE',
+            url: API_URL + 'items/' + $scope.item.id
+        }).then(function(response) {
+            console.log(response);
+            $location.path('/');
+        });
+    };
 
-        editProject.save = function() {
-            editProject.projects.$save(editProject.project).then(function(data) {
-                $location.path('/');
-            });
-        };
-
-        componentHandler.upgradeAllRegistered(); // Processing dynamically added elements MDL
-    });
+    componentHandler.upgradeAllRegistered();
+});

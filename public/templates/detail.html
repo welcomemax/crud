@@ -1,22 +1,14 @@
 <form name="myForm">
     <div>
-        <div class="mdl-textfield mdl-js-textfield" ng-class="{error: myForm.name.$invalid && !myForm.name.$pristine}">
-            <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="editProject.project.name" required>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="name" name="title" ng-model="item.title" required>
             <label class="mdl-textfield__label" for="name">Название</label>
-            <span class="mdl-textfield__error" ng-show="myForm.name.$error.required && !myForm.name.$pristine">Обязательно</span>
+            <span class="mdl-textfield__error" ng-show="myForm.title.$error.required && !myForm.title.$pristine">Обязательно</span>
         </div>
     </div>
     <div>
-        <div class="mdl-textfield mdl-js-textfield" ng-class="{error: myForm.site.$invalid && !myForm.site.$pristine}">
-            <input class="mdl-textfield__input" type="text" id="site" name="site" ng-model="editProject.project.site" required>
-            <label class="mdl-textfield__label" for="site">Сайт</label>
-            <span class="mdl-textfield__error" ng-show="myForm.site.$error.required && !myForm.site.$pristine">Обязательно</span>
-            <span class="mdl-textfield__error" ng-show="myForm.site.$error.url">Не УРЛ</span>
-        </div>
-    </div>
-    <div>
-        <div class="mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" type="text" rows= "3" id="description" name="description" ng-model="editProject.project.description"></textarea>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" type="text" rows="3" id="description" name="description" ng-model="item.description"></textarea>
             <label class="mdl-textfield__label" for="description">Описание</label>
         </div>
     </div>
@@ -24,11 +16,11 @@
     <div>
         <a class="mdl-button mdl-js-button mdl-button--accent" href="#/">Отмена</a>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                ng-click="editProject.save()" ng-disabled="myForm.$invalid">
+                ng-click="save()" ng-disabled="myForm.$invalid">
             Сохранить
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                ng-click="editProject.destroy()" ng-show="editProject.project.$id">
+                ng-click="delete()" ng-show="item.id">
             Удалить
         </button>
     </div>

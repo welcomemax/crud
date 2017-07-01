@@ -1,12 +1,10 @@
-
-
 <form action="#">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="projects_search">
             <i class="material-icons">search</i>
         </label>
         <div class="mdl-textfield__expandable-holder">
-            <input ng-model="projectList.search" class="mdl-textfield__input" type="text" id="projects_search">
+            <input ng-model="items.search" class="mdl-textfield__input" type="text" id="projects_search">
             <label class="mdl-textfield__label"></label>
         </div>
     </div>
@@ -15,17 +13,19 @@
 <table class="mdl-data-table mdl-js-data-table">
     <thead>
     <tr>
-        <th>Проект</th>
+        <th>ID</th>
+        <th>Название</th>
         <th>Описание</th>
-        <th><a href="#/new"><i class="material-icons">add</i></a></th>
+        <th><a class="" href="#/new"><i class="material-icons">add</i></a></th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="project in projectList.projects | filter:projectList.search | orderBy:'name'">
-        <td><a ng-href="{{project.site}}" target="_blank">{{project.name}}</a></td>
-        <td>{{project.description}}</td>
+    <tr ng-repeat="item in items | filter:items.search | orderBy:'id'">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.description }}</td>
         <td>
-            <a ng-href="#/edit/{{project.$id}}"><i class="material-icons">edit</i></a>
+            <a class="" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
         </td>
     </tr>
     </tbody>

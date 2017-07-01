@@ -42,8 +42,8 @@ class ItemController extends Controller
     {
         $item = new Item;
 
-        $item->name = $request->input('title');
-        $item->email = $request->input('description');
+        $item->title = $request->input('title');
+        $item->description = $request->input('description');
         $item->save();
 
         return 'Item record successfully created with id ' . $item->id;
@@ -82,8 +82,8 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
 
-        $item->name = $request->input('title');
-        $item->email = $request->input('description');
+        $item->title = $request->input('title');
+        $item->description = $request->input('description');
 
         $item->save();
 
@@ -93,15 +93,15 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $item = Item::find($request->input('id'));
+        $item = Item::find($id);
 
         $item->delete();
 
-        return "Item record successfully deleted #" . $request->input('id');
+        return "Item record successfully deleted #" . $id;
     }
 }
