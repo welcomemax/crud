@@ -7,5 +7,6 @@ use DB;
 
 class Item extends Model
 {
-    public $fillable = ['title','description'];
+    protected $table = 'items';
+    protected $fillable = ['title','description'];
 }

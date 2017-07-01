@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -9,12 +10,13 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index($id = null)
     {
         if ($id == null) {
-            return Employee::orderBy('id', 'asc')->get();
+            return Item::orderBy('id', 'asc')->get();
         } else {
             return $this->show($id);
         }
@@ -91,7 +93,7 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)

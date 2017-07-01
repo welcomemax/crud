@@ -8,7 +8,7 @@
 //require('./bootstrap');
 
 //require('./angular');
-import 'material-design-lite/dist/material.min.js';
+//import 'material-design-lite/dist/material.min.js';
 
 angular.module('project', ['ngRoute', 'firebase'])
 
