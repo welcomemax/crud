@@ -1,5 +1,6 @@
 // MDL
 @import "node_modules/material-design-lite/src/material-design-lite.scss";
+//@import "node_modules/material-design-lite/dist/material.blue_grey-red.min.css";
 
 // Fonts
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -21,7 +22,55 @@ body {
   justify-content: center;
 }
 
-form{
+.detail{
   background: #fff;
   padding: 10px 20px;
 }
+
+.list{
+  margin: 20px 40px;
+  min-width: 460px;
+  min-height: 400px;
+  position: relative;
+  padding-bottom: 52px;
+  background: #fff;
+
+  &-header{
+    position: relative;
+    background-image: url(/img/triangle-back.png);
+    background-size: cover;
+
+    h2{
+      margin: 0;
+      line-height: 66px;
+      padding: 0 24px;
+      color: rgba(0,0,0,.54);
+      background: rgba(0,0,0,.2);
+    }
+  }
+  &-search{
+    position: absolute;
+    right: 24px;
+    top: 0;
+  }
+
+  &-pagination{
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.02);
+
+    span{
+      margin: 0 10px;
+    }
+  }
+
+  table{
+    width: 100%
+  }
+}
+
+

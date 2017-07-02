@@ -8,5 +8,5 @@ use DB;
 class Item extends Model
 {
     protected $table = 'items';
-    protected $fillable = ['title','description'];
+    protected $fillable = ['title', 'price', 'description'];
 }

@@ -43,8 +43,19 @@ class ItemController extends Controller
         $item = new Item;
 
         $item->title = $request->input('title');
-        $item->description = $request->input('description');
+
+        if($request->input('description'))
+            $item->description = $request->input('description');
+        else
+            $item->description = '';
+
+        if($request->input('price'))
+            $item->price = $request->input('price');
+        else
+            $item->price = 0;
+
         $item->save();
+
 
         return 'Item record successfully created with id ' . $item->id;
     }
@@ -83,7 +94,16 @@ class ItemController extends Controller
         $item = Item::find($id);
 
         $item->title = $request->input('title');
-        $item->description = $request->input('description');
+
+        if($request->input('description'))
+            $item->description = $request->input('description');
+        else
+            $item->description = '';
+
+        if($request->input('price'))
+            $item->price = $request->input('price');
+        else
+            $item->price = 0;
 
         $item->save();
 

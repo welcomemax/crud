@@ -1,32 +1,43 @@
-<form action="#">
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="projects_search">
-            <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-            <input ng-model="items.search" class="mdl-textfield__input" type="text" id="projects_search">
-            <label class="mdl-textfield__label"></label>
+<div class="list">
+    <div class="list-header">
+        <h2>C.R.U.D.</h2>
+        <div class="list-search mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="projects_search">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input ng-model="search" class="mdl-textfield__input" type="text" id="projects_search">
+                <label class="mdl-textfield__label"></label>
+            </div>
         </div>
     </div>
-</form>
 
-<table class="mdl-data-table mdl-js-data-table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Описание</th>
-        <th><a class="" href="#/new"><i class="material-icons">add</i></a></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in items | filter:items.search | orderBy:'id'">
-        <td>{{ item.id }}</td>
-        <td>{{ item.title }}</td>
-        <td>{{ item.description }}</td>
-        <td>
-            <a class="" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Описание</th>
+                <th><a class="mdl-button mdl-js-button mdl-button--icon" href="#/new"><i class="material-icons">add</i></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in filterItems | startFrom: startingItem() | limitTo: itemsPerPage | filter: search | orderBy: 'id'">
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.price }} р.</td>
+                <td>{{ item.description }}</td>
+                <td>
+                    <a class="mdl-button mdl-js-button mdl-button--icon" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="list-pagination">
+        <button class="mdl-button mdl-js-button mdl-button--icon" ng-disabled="firstPage()" ng-click="pageBack()"><i class="material-icons">keyboard_arrow_left</i></button>
+        <span>{{currentPage+1}} из {{numberOfPages()}}</span>
+        <button class="mdl-button mdl-js-button mdl-button--icon" ng-disabled="lastPage()" ng-click="pageForward()"><i class="material-icons">keyboard_arrow_right</i></button>
+    </div>
+</div>
