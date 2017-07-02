@@ -1,9 +1,3 @@
-//require('./bootstrap');
-
-//require('angular');
-
-import 'material-design-lite/dist/material.min.js';
-
 var app = angular.module('items', ["ngRoute"])
     .constant('API_URL', 'http://crud.local/api/');
 
@@ -94,15 +88,21 @@ app.controller('itemDetailController', function($scope, $http, $httpParamSeriali
 
     $http.get(url).then(function(response) {
         $scope.item = response.data;
-        console.log(response.data)
     });
 
     $scope.save = function() {
-        $http({
-            method: 'POST',
-            url: url,
-            data: $httpParamSerializer($scope.item),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        let fd = new FormData(),
+            f = fileInput.files[0];
+
+        fd.append("image", f);
+        fd.append("title", $scope.item.title);
+        fd.append("price", $scope.item.price);
+        fd.append("description", $scope.item.description);
+
+        $http.post(url, fd, {
+            withCredentials: true,
+            headers: {'Content-Type': undefined },
+            transformRequest: angular.identity
         }).then(function(response) {
             console.log(response);
             $location.path('/');
@@ -118,6 +118,47 @@ app.controller('itemDetailController', function($scope, $http, $httpParamSeriali
             $location.path('/');
         });
     };
+
+    $scope.checkDirty = function() {
+        // https://github.com/google/material-design-lite/issues/1287
+        let nodeList = document.querySelectorAll('.mdl-textfield');
+
+        Array.prototype.forEach.call(nodeList, function (elem) {
+            elem.MaterialTextfield.checkDirty();
+        });
+
+        document.getElementById("title").setAttribute('required', true)
+    };
+
+    let fileInputTextDiv = document.getElementById('file_input_text_div');
+    let fileInput = document.getElementById('file_input_file');
+    let fileInputText = document.getElementById('file_input_text');
+
+    fileInput.addEventListener('change', changeInputText);
+    fileInput.addEventListener('change', changeState);
+
+    function changeInputText() {
+        let str = fileInput.value;
+        let i;
+        if (str.lastIndexOf('\\')) {
+            i = str.lastIndexOf('\\') + 1;
+        } else if (str.lastIndexOf('/')) {
+            i = str.lastIndexOf('/') + 1;
+        }
+        fileInputText.value = str.slice(i, str.length);
+    }
+
+    function changeState() {
+        if (fileInputText.value.length != 0) {
+            if (!fileInputTextDiv.classList.contains("is-focused")) {
+                fileInputTextDiv.classList.add('is-focused');
+            }
+        } else {
+            if (fileInputTextDiv.classList.contains("is-focused")) {
+                fileInputTextDiv.classList.remove('is-focused');
+            }
+        }
+    }
 
     componentHandler.upgradeAllRegistered();
 });

@@ -1,13 +1,3 @@
-// MDL
-@import "node_modules/material-design-lite/src/material-design-lite.scss";
-//@import "node_modules/material-design-lite/dist/material.blue_grey-red.min.css";
-
-// Fonts
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-// Variables
-//@import "variables";
-
 body {
   margin: 0;
   background: #44A08D;
@@ -22,9 +12,50 @@ body {
   justify-content: center;
 }
 
+
+
 .detail{
   background: #fff;
-  padding: 10px 20px;
+  width: 460px;
+
+  .mdl-textfield{width: 100%}
+
+  img.full{max-width: 100%;}
+
+  .inputGroup{
+
+  }
+
+  .file_input_div {
+    margin: 20px auto;
+    width: 250px;
+    height: 40px;
+
+    .file_input {
+      float: left;
+    }
+
+    #file_input_text_div {
+      width: 200px;
+      margin-top: -8px;
+      margin-left: 10px;
+    }
+    .none {display: none;}
+  }
+
+  &-body{
+    padding: 10px 20px;
+  }
+
+  &-footer{
+    background: rgba(0,0,0,.02);
+    padding: 10px 20px;
+
+    .mdl-button.pull-right{
+      float: right;
+      margin-left: 5px;
+    }
+  }
 }
 
 .list{
@@ -48,6 +79,7 @@ body {
       background: rgba(0,0,0,.2);
     }
   }
+
   &-search{
     position: absolute;
     right: 24px;
@@ -63,14 +95,12 @@ body {
     left: 0;
     background: rgba(0,0,0,.02);
 
-    span{
-      margin: 0 10px;
-    }
+    span{margin: 0 10px;}
   }
 
-  table{
-    width: 100%
-  }
+  &-table{width: 100%}
+
+  img.preview{width: 100px;}
 }
 
 

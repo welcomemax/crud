@@ -12,13 +12,14 @@
         </div>
     </div>
 
-    <table class="mdl-data-table mdl-js-data-table">
+    <table class="list-table mdl-data-table mdl-js-data-table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Название</th>
                 <th>Цена</th>
                 <th>Описание</th>
+                <th>Изображение</th>
                 <th><a class="mdl-button mdl-js-button mdl-button--icon" href="#/new"><i class="material-icons">add</i></a></th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{ item.title }}</td>
                 <td>{{ item.price }} р.</td>
                 <td>{{ item.description }}</td>
+                <td><img class="preview" ng-show="item.image" ng-src="{{ item.image }}"/></td>
                 <td>
                     <a class="mdl-button mdl-js-button mdl-button--icon" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
                 </td>

@@ -105,9 +105,23 @@ class ItemController extends Controller
         else
             $item->price = 0;
 
+        $image = $request->file('image');
+
+        if($image){
+            $name = $image->getClientOriginalName();
+
+            $image->move('uploads', $name);
+
+            $item->image = '/uploads/'.$name;
+            $addMess = ". File ". $name ." upload";
+        } else {
+            $item->image = '';
+            $addMess = '';
+        }
+
         $item->save();
 
-        return "Success updating item #" . $item->id;
+        return "Success updating item #" . $item->id . $addMess;
     }
 
     /**
