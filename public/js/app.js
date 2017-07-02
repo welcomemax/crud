@@ -68,15 +68,14 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, exports) {
 
-"use strict";
-var app = angular.module('items', ["ngRoute"]).constant('API_URL', 'http://crud.local/api/');
+var app = angular.module('items', ["ngRoute"]).constant('API_URL', '/api/');
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
@@ -237,8 +236,7 @@ app.controller('itemDetailController', function ($scope, $http, $httpParamSerial
 });
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

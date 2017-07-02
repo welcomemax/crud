@@ -1,5 +1,5 @@
 var app = angular.module('items', ["ngRoute"])
-    .constant('API_URL', 'http://crud.local/api/');
+    .constant('API_URL', '/api/');
 
 app.config(function($routeProvider) {
     $routeProvider
