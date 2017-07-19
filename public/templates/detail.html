@@ -1,53 +1,63 @@
-<div class="detail">
+<div class="detail card">
     <form name="myForm">
+        <div class="detail-header card-header">
+            <h2>Детально</h2>
+            <a class="detail-close mdl-button mdl-js-button mdl-button--icon" ng-href="#/"><i class="material-icons">close</i></a>
+        </div>
         <div class="detail-body">
-            <div class="inputGroup">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="title" name="title" ng-model="item.title">
-                    <label class="mdl-textfield__label" for="title">Название</label>
-                    <span class="mdl-textfield__error" ng-show="myForm.title.$error.required && !myForm.title.$pristine">Обязательно</span>
-                </div>
-            </div>
-            <div class="inputGroup">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="price" name="price" ng-model="item.price" pattern="-?[0-9]*(\.[0-9]+)?">
-                    <label class="mdl-textfield__label" for="price">Цена</label>
-                    <span class="mdl-textfield__error">Необходимо число</span>
-                </div>
-            </div>
-            <div class="inputGroup">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" id="description" name="description" ng-model="item.description"></textarea>
-                    <label class="mdl-textfield__label" for="description">Описание</label>
-                </div>
-            </div>
-            <div class="inputGroup">
-                <div class="img-wrap">
-                    <img ng-show="item.image" ng-src="{{ item.image }}"/>
-                </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+                    <div class="detail-input-group">
+                        <div class="img-wrap">
+                            <img ng-show="item.image" ng-src="{{ item.image }}"/>
+                        </div>
 
-                <div class="file_input_div">
-                    <div class="file_input">
-                        <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                            <i class="material-icons">file_upload</i>
-                            <input id="file_input_file" class="none" type="file" />
-                        </label>
+                        <div class="file-input-div">
+                            <div class="file-input">
+                                <label class="image-input-button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                                    <i class="material-icons">file_upload</i>
+                                    <input id="file-input-file" class="none" type="file" />
+                                </label>
+                            </div>
+                            <div id="file-input-text-div" class="mdl-textfield mdl-js-textfield textfield-demo">
+                                <input class="file-input-text mdl-textfield__input" type="text" readonly id="file-input-text" placeholder=""/>
+                                <label class="mdl-textfield__label" for="file-input-text"></label>
+                            </div>
+                        </div>
                     </div>
-                    <div id="file_input_text_div" class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <input class="file_input_text mdl-textfield__input" type="text" readonly id="file_input_text" />
-                        <label class="mdl-textfield__label" for="file_input_text"></label>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+                    <div class="detail-input-group">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="title" name="title" ng-model="item.title" required>
+                            <label class="mdl-textfield__label" for="title">Название *</label>
+                            <span class="mdl-textfield__error" ng-show="myForm.title.$error.required && !myForm.title.$pristine">Обязательно</span>
+                        </div>
+                    </div>
+                    <div class="detail-input-group">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="price" name="price" ng-model="item.price" pattern="[0-9]+(\.[0-9][0-9]?)?">
+                            <label class="mdl-textfield__label" for="price">Цена</label>
+                            <span class="mdl-textfield__error">Необходимо число</span>
+                        </div>
+                    </div>
+                    <div class="detail-input-group">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <textarea class="mdl-textfield__input" type="text" rows="3" id="description" name="description" ng-model="item.description"></textarea>
+                            <label class="mdl-textfield__label" for="description">Описание</label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="detail-footer">
-            <a id="tt1" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#/">Отмена</a>
+            <!--<a id="tt1" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button&#45;&#45;accent" href="#/">Отмена</a>-->
             <button id="tt2" class="pull-right mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                     ng-click="save()" ng-disabled="myForm.$invalid">
                 Сохранить
             </button>
-            <button id="tt3" class="pull-right mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            <button id="tt3" class="pull-right mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                     ng-click="delete()" ng-show="item.id">
                 Удалить
             </button>

@@ -1,99 +1,135 @@
 body {
   margin: 0;
-  background: #44A08D;
-  background: -webkit-linear-gradient(to bottom, #44A08D, #093637);
-  background: linear-gradient(to bottom, #44A08D, #093637);
 }
 
-.wrapper{
-  height: 100vh;
+.app-header{
+  color: rgba(0,0,0,.4);
+  font-size: 78px;
+}
+
+.app-note{
+  color: #dcdcdc;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+
+.wrapper {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background: #44A08D;
+  background: -webkit-gradient(linear, left top, left bottom, from(#44A08D), to(#093637));
+  background: linear-gradient(to bottom, #44A08D, #093637);
+
+  &:before,
+  &:after{
+    content: ' ';
+    display: table;
+  }
 }
 
-
-
-.detail{
+.card{
+  position: relative;
+  margin: 20px 40px;
   background: #fff;
-  width: 460px;
+  max-width: 1000px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
-  .mdl-textfield{width: 100%}
+  &-header {
+    position: relative;
+    background-image: url(/img/triangle-back.png);
+    background-size: cover;
 
-  .img-wrap{
+    h2 {
+      margin: 0;
+      line-height: 66px;
+      font-size: 20px;
+      padding: 0 24px;
+      color: rgba(0,0,0,.54);
+      background: rgba(0,0,0,.2);
+    }
+  }
+}
+
+.detail {
+
+  &-close {
+    position: absolute;
+    right: 24px;
+    top: 16px;
+  }
+
+  .mdl-textfield {
+    width: 100%
+  }
+
+  .img-wrap {
     text-align: center;
 
-    img{max-width: 100%;}
-  }
-
-
-  .inputGroup{
-
-  }
-
-  .file_input_div {
-    margin: 20px auto;
-    width: 250px;
-    height: 40px;
-
-    .file_input {
-      float: left;
+    img {
+      max-width: 100%;
     }
-
-    #file_input_text_div {
-      width: 200px;
-      margin-top: -8px;
-      margin-left: 10px;
-    }
-    .none {display: none;}
   }
 
-  &-body{
+  &-body {
     padding: 10px 20px;
+
+    .mdl-cell {
+      min-width: 250px;
+    }
+
+    &-input-group {
+
+    }
+
+    .file-input-div {
+      margin: 20px auto;
+      width: 250px;
+      height: 40px;
+
+      .file-input {
+        float: left;
+      }
+
+      #file-input-text-div {
+        width: 200px;
+        margin-top: -8px;
+        margin-left: 10px;
+      }
+      .none {
+        display: none;
+      }
+    }
   }
 
-  &-footer{
+  &-footer {
     background: rgba(0,0,0,.02);
     padding: 10px 20px;
+    overflow: hidden;
 
-    .mdl-button.pull-right{
+    .mdl-button.pull-right {
       float: right;
       margin-left: 5px;
     }
   }
 }
 
-.list{
-  margin: 20px 40px;
+.list {
   min-width: 460px;
   min-height: 400px;
-  position: relative;
+  overflow-x: auto;
   padding-bottom: 52px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
-  &-header{
-    position: relative;
-    background-image: url(/img/triangle-back.png);
-    background-size: cover;
-
-    h2{
-      margin: 0;
-      line-height: 66px;
-      padding: 0 24px;
-      color: rgba(0,0,0,.54);
-      background: rgba(0,0,0,.2);
-    }
-  }
-
-  &-search{
+  &-search {
     position: absolute;
     right: 24px;
     top: 0;
   }
 
-  &-pagination{
+  &-pagination {
     padding: 10px 0;
     text-align: center;
     width: 100%;
@@ -102,12 +138,60 @@ body {
     left: 0;
     background: rgba(0,0,0,.02);
 
-    span{margin: 0 10px;}
+    span {
+      margin: 0 10px;
+    }
   }
 
-  &-table{width: 100%}
+  &-table {
+    width: 100%;
+    white-space: normal;
 
-  img.preview{width: 100px;}
+    th {
+      text-align: left;
+
+      &.sort {
+        cursor: pointer;
+
+        &:after {
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0px;
+        }
+        &.asc:after {
+          border-top: 5px solid #000;
+        }
+        &.desc:after {
+          border-bottom: 5px solid #000;
+        }
+      }
+    }
+
+    td {
+      text-align: left;
+    }
+
+    img.preview {
+      width: 100px;
+    }
+  }
 }
 
+@media all and (max-width: 700px) {
+  .list {
+    margin: 0 0 20px 0;
+    width: 100%;
+  }
+  .detail {
+    margin: 0 0 20px 0;
+    width: 100%;
+  }
+}
 

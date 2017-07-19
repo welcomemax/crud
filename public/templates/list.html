@@ -1,6 +1,6 @@
-<div class="list">
-    <div class="list-header">
-        <h2>C.R.U.D.</h2>
+<div class="list card">
+    <div class="list-header card-header">
+        <h2>Список</h2>
         <div class="list-search mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="projects_search">
                 <i class="material-icons">search</i>
@@ -15,19 +15,19 @@
     <table class="list-table mdl-data-table mdl-js-data-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Название</th>
-                <th>Цена</th>
-                <th>Описание</th>
+                <th data-sort="id" ng-click="toggleSort($event)" class="sort asc">ID</th>
+                <th data-sort="title" ng-click="toggleSort($event)" class="sort">Название</th>
+                <th data-sort="price" ng-click="toggleSort($event)" class="sort">Цена</th>
+                <th data-sort="description" ng-click="toggleSort($event)" class="sort">Описание</th>
                 <th>Изображение</th>
                 <th><a class="mdl-button mdl-js-button mdl-button--icon" href="#/new"><i class="material-icons">add</i></a></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in filterItems | startFrom: startingItem() | limitTo: itemsPerPage | filter: search | orderBy: 'id'">
+            <tr ng-repeat="item in filterItems | startFrom: startingItem() | limitTo: itemsPerPage | filter: search | orderBy:sortType:sortReverse">
                 <td>{{ item.id }}</td>
                 <td>{{ item.title }}</td>
-                <td>{{ item.price }} р.</td>
+                <td>{{ item.price.toLocaleString('ru-RU') }} р.</td>
                 <td>{{ item.description }}</td>
                 <td><img class="preview" ng-show="item.image" ng-src="{{ item.image }}"/></td>
                 <td>

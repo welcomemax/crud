@@ -19,7 +19,11 @@
     </head>
     <body>
         <div class="wrapper">
+            <h1 class="app-header">C.R.U.D.</h1>
             <div ng-view></div>
+            <div class="app-note">
+                SPA для работы с БД на angular
+            </div>
         </div>
     </body>
 </html>

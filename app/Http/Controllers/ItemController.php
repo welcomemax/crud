@@ -25,38 +25,28 @@ class ItemController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $item = new Item;
 
         $item->title = $request->input('title');
 
-        if($request->input('description'))
+        if ($request->input('description'))
             $item->description = $request->input('description');
         else
             $item->description = '';
 
-        if($request->input('price'))
+        if ($request->input('price'))
             $item->price = $request->input('price');
         else
             $item->price = 0;
 
         $image = $request->file('image');
 
-        if($image){
+        if ($image) {
             $name = $image->getClientOriginalName();
 
             $image->move('uploads', $name);
@@ -73,6 +63,7 @@ class ItemController extends Controller
         return "Success updating item #" . $item->id . $addMess;
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -82,17 +73,6 @@ class ItemController extends Controller
     public function show($id)
     {
         return Item::find($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -108,19 +88,19 @@ class ItemController extends Controller
 
         $item->title = $request->input('title');
 
-        if($request->input('description'))
+        if ($request->input('description'))
             $item->description = $request->input('description');
         else
             $item->description = '';
 
-        if($request->input('price'))
+        if ($request->input('price'))
             $item->price = $request->input('price');
         else
             $item->price = 0;
 
         $image = $request->file('image');
 
-        if($image){
+        if ($image) {
             $name = $image->getClientOriginalName();
 
             $image->move('uploads', $name);
@@ -145,10 +125,12 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $item = Item::find($id);
+        if ($id) {
+            $item = Item::find($id);
 
-        $item->delete();
+            $item->delete();
 
-        return "Item record successfully deleted #" . $id;
+            return "Item record successfully deleted #" . $id;
+        }
     }
 }
