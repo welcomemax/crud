@@ -10,7 +10,8 @@ body {
 .app-note{
   color: #dcdcdc;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-top: 16px;
+  padding: 0 16px;
 }
 
 
@@ -33,7 +34,6 @@ body {
 
 .card{
   position: relative;
-  margin: 20px 40px;
   background: #fff;
   max-width: 1000px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -118,9 +118,6 @@ body {
 }
 
 .list {
-  min-width: 460px;
-  min-height: 400px;
-  overflow-x: auto;
   padding-bottom: 52px;
 
   &-search {
@@ -163,7 +160,7 @@ body {
           content: "";
           position: absolute;
           top: 50%;
-          right: 0px;
+          right: 5px;
         }
         &.asc:after {
           border-top: 5px solid #000;
@@ -184,14 +181,19 @@ body {
   }
 }
 
-@media all and (max-width: 700px) {
-  .list {
-    margin: 0 0 20px 0;
-    width: 100%;
-  }
-  .detail {
-    margin: 0 0 20px 0;
-    width: 100%;
-  }
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
 }
 
+@media all and (max-width: 767px) {
+  .wrapper{
+    align-items: stretch;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+}

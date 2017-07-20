@@ -60,7 +60,7 @@
             <div ng-view></div>
             <p class="app-note">
                 SPA для работы с БД на Laravel+Angular<br>
-                <a href="https://github.com/welcomemax/crud">View the Project on GitHub</a>
+                <a target="_blank" href="https://github.com/welcomemax/crud">View the Project on GitHub</a>
             </p>
         </div>
 
