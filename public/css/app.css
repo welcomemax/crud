@@ -1,1 +1,208 @@
-body{margin:0}.app-header{color:rgba(0,0,0,.4);font-size:78px}.app-note{color:#dcdcdc;font-size:12px;margin-top:16px;padding:0 16px}.wrapper{min-height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;background:#44a08d;background:-webkit-gradient(linear,left top,left bottom,from(#44a08d),to(#093637));background:linear-gradient(180deg,#44a08d,#093637)}.wrapper:after,.wrapper:before{content:" ";display:table}.card{position:relative;background:#fff;max-width:1000px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}.card-header{position:relative;background-image:url(/img/triangle-back.png);background-size:cover}.card-header h2{margin:0;line-height:66px;font-size:20px;padding:0 24px;color:rgba(0,0,0,.54);background:rgba(0,0,0,.2)}.detail-close{position:absolute;right:24px;top:16px}.detail .mdl-textfield{width:100%}.detail .img-wrap{text-align:center}.detail .img-wrap img{max-width:100%}.detail-body{padding:10px 20px}.detail-body .mdl-cell{min-width:250px}.detail-body .file-input-div{margin:20px auto;width:250px;height:40px}.detail-body .file-input-div .file-input{float:left}.detail-body .file-input-div #file-input-text-div{width:200px;margin-top:-8px;margin-left:10px}.detail-body .file-input-div .none{display:none}.detail-footer{background:rgba(0,0,0,.02);padding:10px 20px;overflow:hidden}.detail-footer .mdl-button.pull-right{float:right;margin-left:5px}.list{padding-bottom:52px}.list-search{position:absolute;right:24px;top:0}.list-pagination{padding:10px 0;text-align:center;width:100%;position:absolute;bottom:0;left:0;background:rgba(0,0,0,.02)}.list-pagination span{margin:0 10px}.list-table{width:100%;white-space:normal;border:none}.list-table th{text-align:left}.list-table th.sort{cursor:pointer}.list-table th.sort:after{display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid transparent;content:"";position:absolute;top:50%;right:5px}.list-table th.sort.asc:after{border-top:5px solid #000}.list-table th.sort.desc:after{border-bottom:5px solid #000}.list-table td{text-align:left}.list-table img.preview{width:100px}.table-responsive{min-height:.01%;overflow-x:auto}@media (max-width:767px){.wrapper{-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch}.table-responsive{width:100%;overflow-y:hidden;-ms-overflow-style:-ms-autohiding-scrollbar}}
+body {
+  margin: 0;
+}
+
+.app-header {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 78px;
+}
+
+.app-note {
+  color: #dcdcdc;
+  font-size: 12px;
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #44A08D;
+  background: -webkit-gradient(linear, left top, left bottom, from(#44A08D), to(#093637));
+  background: linear-gradient(to bottom, #44A08D, #093637);
+}
+
+.wrapper:before,
+.wrapper:after {
+  content: ' ';
+  display: table;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  max-width: 1000px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card-header {
+  position: relative;
+  background-image: url(/img/triangle-back.png);
+  background-size: cover;
+}
+
+.card-header h2 {
+  margin: 0;
+  line-height: 66px;
+  font-size: 20px;
+  padding: 0 24px;
+  color: rgba(0, 0, 0, 0.54);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.detail-close {
+  position: absolute;
+  right: 24px;
+  top: 16px;
+}
+
+.detail .mdl-textfield {
+  width: 100%;
+}
+
+.detail .img-wrap {
+  text-align: center;
+}
+
+.detail .img-wrap img {
+  max-width: 100%;
+}
+
+.detail-body {
+  padding: 10px 20px;
+}
+
+.detail-body .mdl-cell {
+  min-width: 250px;
+}
+
+.detail-body .file-input-div {
+  margin: 20px auto;
+  width: 250px;
+  height: 40px;
+}
+
+.detail-body .file-input-div .file-input {
+  float: left;
+}
+
+.detail-body .file-input-div #file-input-text-div {
+  width: 200px;
+  margin-top: -8px;
+  margin-left: 10px;
+}
+
+.detail-body .file-input-div .none {
+  display: none;
+}
+
+.detail-footer {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 20px;
+  overflow: hidden;
+}
+
+.detail-footer .mdl-button.pull-right {
+  float: right;
+  margin-left: 5px;
+}
+
+.list {
+  padding-bottom: 52px;
+}
+
+.list-search {
+  position: absolute;
+  right: 24px;
+  top: 0;
+}
+
+.list-pagination {
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.list-pagination span {
+  margin: 0 10px;
+}
+
+.list-table {
+  width: 100%;
+  white-space: normal;
+  border: none;
+}
+
+.list-table th {
+  text-align: left;
+}
+
+.list-table th.sort {
+  cursor: pointer;
+}
+
+.list-table th.sort:after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 5px;
+}
+
+.list-table th.sort.asc:after {
+  border-top: 5px solid #000;
+}
+
+.list-table th.sort.desc:after {
+  border-bottom: 5px solid #000;
+}
+
+.list-table td {
+  text-align: left;
+}
+
+.list-table img.preview {
+  width: 100px;
+}
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+
+@media all and (max-width: 767px) {
+  .wrapper {
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+}
+
