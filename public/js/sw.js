@@ -1,6 +1,6 @@
 'use strict';
 
-importScripts('sw-toolbox.js');
+importScripts('libs/sw-toolbox.min.js');
 
 toolbox.precache(["index.html","css/style.css"]);
 

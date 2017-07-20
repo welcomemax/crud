@@ -120,7 +120,7 @@ app.controller('itemDetailController', function($scope, $http, $httpParamSeriali
 
         fd.append('image', f);
         fd.append('title', $scope.item.title);
-        fd.append('price', parseFloat($scope.item.price.replace(',', '.')) || 0);
+        fd.append('price', parseFloat($scope.item) || 0);
         fd.append('description', $scope.item.description || '');
 
         $http.post(url, fd, {
