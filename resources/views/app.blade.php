@@ -60,12 +60,12 @@
         <div class="wrapper">
             <h1 class="app-header">C.R.U.D.</h1>
             <div ng-view></div>
-            <div class="app-note">
-                SPA для работы с БД на angular
-            </div>
+						<p class="app-note">
+								SPA для работы с БД на Laravel+Angular<br>
+								<a href="https://github.com/welcomemax/crud">View the Project on GitHub</a>
+						</p>
         </div>
-				
-		
+						
 				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
 				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 				
