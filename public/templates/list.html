@@ -2,7 +2,7 @@
     <div class="list-header card-header">
         <h2>Список</h2>
         <div class="list-search mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="projects_search">
+            <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent" for="projects_search">
                 <i class="material-icons">search</i>
             </label>
             <div class="mdl-textfield__expandable-holder">
@@ -21,18 +21,18 @@
                     <th data-sort="price" ng-click="toggleSort($event)" class="sort">Цена</th>
                     <th data-sort="description" ng-click="toggleSort($event)" class="sort">Описание</th>
                     <th>Изображение</th>
-                    <th><a class="mdl-button mdl-js-button mdl-button--icon" href="#/new"><i class="material-icons">add</i></a></th>
+                    <th><a class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent" href="#/new"><i class="material-icons">add</i></a></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="item in filterItems | startFrom: startingItem() | limitTo: itemsPerPage | filter: search | orderBy:sortType:sortReverse">
                     <td>{{ item.id }}</td>
                     <td>{{ item.title }}</td>
-                    <td>{{ item.price.toLocaleString('ru-RU') }} р.</td>
+                    <td class="nowrap">{{ item.price.toLocaleString('ru-RU') }} р.</td>
                     <td>{{ item.description }}</td>
                     <td><img class="preview" ng-show="item.image" ng-src="{{ item.image }}"/></td>
                     <td>
-                        <a class="mdl-button mdl-js-button mdl-button--icon" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
+                        <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent" ng-href="#/edit/{{item.id}}"><i class="material-icons">edit</i></a>
                     </td>
                 </tr>
             </tbody>

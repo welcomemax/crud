@@ -59,8 +59,8 @@ body {
   line-height: 66px;
   font-size: 20px;
   padding: 0 24px;
-  color: rgba(0, 0, 0, 0.54);
-  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .detail-close {
@@ -181,6 +181,10 @@ body {
 
 .list-table td {
   text-align: left;
+}
+
+.list-table td.nowrap {
+  white-space: nowrap;
 }
 
 .list-table img.preview {
